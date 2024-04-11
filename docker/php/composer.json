@@ -1,0 +1,21 @@
+{
+    "name": "ovchie/filexplorer",
+    "description": "Screening wb top positions",
+    "type": "project",
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "Modules\\App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ovchie",
+            "email": "ov4innikovsa@yandex.ru"
+        }
+    ],
+    "minimum-stability": "alpha",
+    "require": {
+        "php": ">=7.2.5"
+    }
+}
