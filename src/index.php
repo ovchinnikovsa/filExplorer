@@ -7,10 +7,12 @@ declare(strict_types=1);
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\Router\Router;
-use App\View\View;
+use App\Controller\StaticController;
+use App\Controller\ExplorerController;
 
 $router = new Router();
 
-$router->addRoute('/explorer/', [View::class, 'explorer']);
+$router->addRoute('/', [StaticController::class, 'index']);
+$router->addRoute('explorer', [ExplorerController::class, 'explorer']);
 
 $router->sendResponse();

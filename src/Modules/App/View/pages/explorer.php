@@ -9,9 +9,15 @@
 
 <body>
     <h1>Explorer</h1>
-    <ul>
-        <li>/</li>
-    </ul>
+    <?php if ($fileScanner) { ?>
+        <ul>
+            <?php foreach ($fileScanner->getFiles() as $file) { ?>
+            <li><?php var_dump($file); ?></li>
+            <?php } ?>
+        </ul>
+    <?php } else { ?>
+        <p>Unable to scan files</p>
+    <?php } ?>
 </body>
 
 </html>

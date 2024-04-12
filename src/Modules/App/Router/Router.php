@@ -2,6 +2,7 @@
 
 namespace App\Router;
 
+use App\Controller\StaticController;
 
 class Router
 {
@@ -24,10 +25,16 @@ class Router
         $handler = $this->routes[$method] ?? null;
         if ($handler) {
             try {
-                $res = call_user_func_array($handler, [$params]);
+                call_user_func_array($handler, [$params]);
             } catch (\Exception $e) {
+                StaticController::error([
+                    'message' => $e->getMessage()
+                ]);
             }
         } else {
+            StaticController::error([
+                'message' => 'Method not found'
+            ]);
         }
     }
 
@@ -42,14 +49,10 @@ class Router
     {
         $url = parse_url(self::getCurrentUrl());
 
-        $method = $url['path'] ?? '';
-        $method = explode('/', $method);
+        $params = $url['path'] ?? '';
+        $method = explode('/', $params);
         $method = $method[0] ?: $method[1];
         $method = $method === '' ? '/' : $method;
-
-        $url_params = $url['query'] ?? '';
-        $url_params = urldecode($url_params);
-        parse_str($url_params, $params);
 
         return [
             'method' => $method,
