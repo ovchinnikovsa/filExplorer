@@ -11,9 +11,14 @@ class StaticController extends Controller
     {
         self::close('index');
     }
-    public static function explorer(): void
+    public static function auth(): void
     {
-        self::close('explorer');
+        self::close('auth', needBlock: false);
+    }
+
+    public static function mysql(): void
+    {
+        self::close('mysql', needBlock: false);
     }
 
     public static function error(array $data): void
@@ -21,9 +26,9 @@ class StaticController extends Controller
         self::close('error', $data);
     }
 
-    protected static function view(string $page, mixed $data = null): string
+    protected static function view(string $page, mixed $data = null, bool $needBlock = true): string
     {
         $data = $data ?? [];
-        return View::render($page, $data);
+        return View::render($page, $data, $needBlock);
     }
 }
