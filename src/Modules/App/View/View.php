@@ -2,7 +2,6 @@
 
 namespace App\View;
 
-
 class View
 {
     const PAGE_PATH = __DIR__ . '/pages/';
@@ -14,7 +13,9 @@ class View
         }
         extract($data);
         ob_start();
+        include self::PAGE_PATH . 'blocks/head.php';
         include self::PAGE_PATH . $page . '.php';
+        include self::PAGE_PATH . 'blocks/footer.php';
         return ob_get_clean();
     }
 }

@@ -25,3 +25,6 @@ composer-update:
 generate-files:
 	chmod +x ./docker/php/files_generator.sh
 	./docker/php/files_generator.sh
+
+clear-files:
+	rm -rf ./docker/files

@@ -2,20 +2,38 @@
 
 namespace App\View;
 
-use App\FileExplorer\FileScanner;
+use App\View\View;
 
-
-class ViewExplorer
+class ViewExplorer extends View
 {
-    const PAGE_PATH = __DIR__ . '/pages/';
-
-    public static function render(string $page, FileScanner $fileScanner): string
+    public static function drawExplorer(array $data): string
     {
-        if (!file_exists(self::PAGE_PATH . $page . '.php')) {
-            throw new \Exception("Page not found", 1);
-        }
+        $html = '';
         ob_start();
-        include self::PAGE_PATH . $page . '.php';
-        return ob_get_clean();
+        ?>
+        <?php if ($data) { ?>
+            <ul>
+                <?php foreach ($data as $file) { ?>
+                    <?php if ($file['is_dir']) { ?>
+                        <a href="<?php echo $file['link']; ?>">
+                            <li class="dir">
+                                <?php echo htmlentities($file['name']); ?>
+                            </li>
+                        </a>
+                    <?php } else { ?>
+                        <li>
+                            <?php echo htmlentities($file['name']); ?>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
+            </ul>
+        <?php } else { ?>
+            <p>Unable to scan files</p>
+        <?php } ?>
+        <?php
+        $html .= ob_get_clean();
+        return $html;
     }
+
+
 }

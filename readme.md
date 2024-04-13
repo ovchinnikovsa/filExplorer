@@ -1,20 +1,22 @@
-# wbScreener
+# filExplorer
 
-Just for parse wb top positions by search keywords.
+App thats allows to create isolated file explorer on your site.
 
 ## Installations
 
 ###  Requirements:
-* linux or win, under wsl
-* installed docker
-* installed make app
+* system unix like
+or win with [wsl](https://learn.microsoft.com/ru-ru/windows/wsl/install)
+* installed [docker](https://www.docker.com/)
+* installed [make app](https://www.gnu.org/software/make/)
 
 ### Steps to build
 
 Run make instructions:
 
-1. `make build`
-2. `make run`
-3. `make composer-install`
+1. `make generate-files` to generate dirs and files
+2. `make build` to build app
+3. `make run` to start docker-compose
+4. `make composer-install` to cast composer magic
 
 To stop - `make stop`
