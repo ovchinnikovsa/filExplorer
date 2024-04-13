@@ -13,6 +13,10 @@
             text-decoration: underline;
         }
 
+        a:hover {
+            color: #80b0db;
+        }
+
         .form-wrapper {
             display: flex;
             align-items: center;

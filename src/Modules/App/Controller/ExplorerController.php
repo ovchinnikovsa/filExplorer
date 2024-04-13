@@ -17,8 +17,8 @@ class ExplorerController extends Controller
         self::close('explorer', $fileScanner->getPathList());
     }
 
-    protected static function view(string $page, mixed $data = null): string
+    protected static function view(string $page, mixed $data = null, $needBlock = false): string
     {
-        return ViewExplorer::render($page, $data);
+        return ViewExplorer::render($page, $data, $needBlock);
     }
 }
