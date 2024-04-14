@@ -22,3 +22,13 @@ services:
       - ./docker/files:/var/www/html/files
     expose:
       - 9000
+
+  mariadb:
+      image: mariadb:10.9
+      ports:
+        - 3306:3306
+      volumes:
+        - ./docker/mariadb/database:/var/lib/mysql
+        - ./docker/mariadb/dump:/var/backups:rw
+      env_file:
+        - .env

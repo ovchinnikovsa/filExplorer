@@ -1,3 +1,5 @@
+include .env
+
 run:
 	docker-compose up -d
 
@@ -28,3 +30,11 @@ generate-files:
 
 clear-files:
 	rm -rf ./docker/files
+
+db_dump:
+	docker-compose exec mariadb sh -c "exec mariadb-dump -uroot \
+	-p$(MARIADB_ROOT_PASSWORD) $(MARIADB_DATABASE) > /var/backups/db.sql"
+
+db_restore:
+	docker-compose exec -i mariadb sh -c "exec mysql --user=root \
+	--password=$(MARIADB_ROOT_PASSWORD) $(MARIADB_DATABASE) < /var/backups/db.sql"

@@ -1,3 +1,4 @@
 /docker/files/
 /src/vendor
 /src/files
+/docker/mariadb/database
