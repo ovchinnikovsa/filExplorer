@@ -59,7 +59,10 @@ $files = scandir($path_to_open);
 foreach ($files as $file) {
     if ($file === '.') {
         continue;
-    } elseif ($file === '..' && $uri_back !== '') {
+    } elseif ($file === '..') {
+        if ($uri_back === '') {
+            continue;
+        }
         echo '<a href="' . $uri_back . '">';
         echo $file . '</a><br>';
         continue;
