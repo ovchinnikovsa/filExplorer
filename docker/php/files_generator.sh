@@ -8,9 +8,9 @@ cd "$path/$main_dir"
 path="$PWD"
 
 declare -a folders=(
-        "nature:forest:sea"
-        "abstract:shapes:colors"
-        "animals:cats:dogs"
+        "nat.ure:for.est:sea"
+        "abst.ract:sha.pes:colors"
+        "ani.mals:ca.ts:dogs"
         "landscape:mountains:beaches"
         "sports:football:baseball"
         "food:fruits:vegetables"

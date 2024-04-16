@@ -9,6 +9,6 @@ RUN curl -sSLf \
     chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions xdebug
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www/html
